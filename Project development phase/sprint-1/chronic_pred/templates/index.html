@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Chronic kidney disease predictor</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  
+  <!-- Vendor CSS Files -->
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='aos.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-icons.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='boxicons.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='glightbox.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='remixicon.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='swiper-bundle.min.css') }}">
+
+  <!-- Template Main CSS File -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body style="background-image: url('static/hero-bg.jpg');">
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+      <h1 class="logo"><a href="index.html"></a>preventCKD</h1>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          {% if current_user.is_authenticated %}
+          <li><a href="{{ url_for('useful_links') }}">Useful links</a></li>
+          <li><a href="{{ url_for('predict') }}"> Predict </a></li>
+          <li><a href="{{ url_for('logout') }}">Logout</a></li>
+         
+          {% else %}
+          <li><a href="{{ url_for('login') }}"> Sign in </a></li>
+          <li><a class="getstarted scrollto" href="{{ url_for('register') }}">Get Started</a></li>
+          {% endif %}
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+  <div>{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  {% block content %}{% endblock %}</div>
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+      <div class="row justify-content-center">
+        <div class="col-xl-7 col-lg-9 text-center">
+          <h1>Your Kidney has an important job to do</h1>
+          <h2>We help you to keep your kidney healthy</h2>
+        </div>
+      </div>
+      <div class="text-center">
+        <a href="{{ url_for('register') }}" class="btn-get-started scrollto">Get Started</a>
+        
+      </div>
+
+      <div class="row icon-boxes">
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
+          <div class="icon-box">
+            <h4 class="title"><a href="">Your Kidneys Pump More than 50 Gallons of Blood Daily</a></h4>       
+            <p class="description">Your kidneys may be small, but they do quite a bit of work! The kidneys are responsible for removing waste and excess liquid from the body by filtering them out from your blood. Your kidneys filter through about 52 gallons (200 liters) of blood throughout a given day!</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="300">
+          <div class="icon-box">
+            <h4 class="title"><a href="">They Regulate Your Body’s Salt Content</a></h4>
+            <p class="description">Along with filtering out waste from your blood, your kidneys also help regulate your body’s sodium levels. However, it is important to keep in mind that it is possible to take in more salt than your kidneys can safely remove from your body. While salt is essential for your body to function properly, excess amounts can be damaging to your body, leading to heart disease, stroke, and even kidney failure.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="400">
+          <div class="icon-box">
+            <h4 class="title"><a href="">Kidney Disease, a huge burden</a></h4>
+            <p class="description"> Kidney disease remains a huge burden on the society and it is estimated that about 10% of the adult population has some form of kidney disease and 200,000 people get afflicted with severe kidney disease (end stage kidney disease) every year </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="500">
+          <div class="icon-box">
+            <h4 class="title"><a href="">kidney disease, preventable?</a></h4>
+            <p class="description">Many kidney diseases are preventable if detected early and certainly the progression of kidney disease can be slowed down with good control of diabetes, hypertension, lifestyle modifications, dietary measures and avoidance of medicines that are toxic to the kidneys</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+
+  <script src="{{ url_for('static', filename='purecounter_vanilla.js') }}"></script>
+  <script src="{{ url_for('static', filename='aos.js') }}"></script>
+  <script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='glightbox.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='isotope.pkgd.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='swiper-bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='validate.js') }}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
+
+</body>
+
+</html>
